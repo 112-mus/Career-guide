@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Career Guide</h1>
+        <p>Find the best career options based on your interests</p>
+    </header>
+
+    <section class="search-container">
+        <input type="text" id="searchInput" placeholder="Enter a career (e.g., Engineer, Doctor)">
+        <button onclick="searchCareer()">Search</button>
+    </section>
+
+    <section id="careerResults"></section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+}
+
+.search-container {
+    margin: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 60%;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#careerResults {
+    margin-top: 20px;
+    font-size: 18px;
+}
+function searchCareer() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const results = document.getElementById("careerResults");
+
+    const careers = {
+        "engineer": "Engineering involves designing and building things like machines, software, and infrastructure. Popular fields include Civil, Mechanical, and Software Engineering.",
+        "doctor": "Doctors diagnose and treat illnesses. Specializations include General Physician, Surgeon, Cardiologist, etc.",
+        "teacher": "Teachers educate students in schools, colleges, or online platforms. Specializations include Math, Science, English, etc.",
+        "accountant": "Accountants manage financial records and tax filings for individuals and businesses.",
+        "data analyst": "Data Analysts interpret data to help businesses make decisions using tools like Excel, Python, and SQL."
+    };
+
+    if (careers[input]) {
+        results.innerHTML = `<p><strong>${input.charAt(0).toUpperCase() + input.slice(1)}</strong>: ${careers[input]}</p>`;
+    } else {
+        results.innerHTML = "<p>No information found. Try another career!</p>";
+    }
+}
